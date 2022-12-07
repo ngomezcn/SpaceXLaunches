@@ -10,11 +10,10 @@ import android.content.Context
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.R
-import com.example.spacexlaunches.model.Launch
+import com.example.spacexlaunches.model.models.Launch
+import okhttp3.internal.notify
 
-class LaunchAdapter (private val launches: List<Launch>,
-                     private val listener: OnClickListener
-):
+class LaunchAdapter (private var launches: List<Launch>, private val listener: OnClickListener):
     RecyclerView.Adapter<LaunchAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -25,15 +24,21 @@ class LaunchAdapter (private val launches: List<Launch>,
         return ViewHolder(view)
     }
 
+    fun setList(newLaunches: List<Launch>) {
+        println(launches)
+        launches = newLaunches
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val launch = launches[position]
         with(holder){
             setListener(launch)
-            binding.missionNameTextView.text = launch.missionName
-            binding.rocketNameTextView.text = launch.rocketName
-            binding.dateTextView.text = launch.date
+            binding.missionNameTextView.text = launch.name
+            binding.rocketNameTextView.text = launch.flightNumber.toString()
+            binding.dateTextView.text = launch.dateUtc
             Glide.with(context)
-                .load(launch.url)
+                .load(launch.links?.patch?.large)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .circleCrop()
@@ -48,9 +53,9 @@ class LaunchAdapter (private val launches: List<Launch>,
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ItemLayoutBinding.bind(view)
 
-        fun setListener(user: Launch){
+        fun setListener(launch: Launch){
             binding.root.setOnClickListener {
-                listener.onClick(user)
+                listener.onClick(launch)
             }
         }
     }

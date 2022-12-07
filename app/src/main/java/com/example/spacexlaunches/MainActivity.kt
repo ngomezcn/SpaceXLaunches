@@ -3,6 +3,7 @@ package com.example.spacexlaunches
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.spacexlaunches.databinding.ActivityMainBinding
+import com.example.spacexlaunches.fragments.LaunchListFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

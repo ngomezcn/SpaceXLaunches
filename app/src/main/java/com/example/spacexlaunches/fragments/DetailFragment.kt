@@ -1,4 +1,4 @@
-package com.example.spacexlaunches
+package com.example.spacexlaunches.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,7 +22,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
-        binding.text.text = model.selectedUser.value!!.rocketName
+        binding.text.text = model.selectedUser.value!!.name
         return binding.root
     }
 }
