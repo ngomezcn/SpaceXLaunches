@@ -12,6 +12,8 @@ import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.R
 import com.example.spacexlaunches.model.models.Launch
 import okhttp3.internal.notify
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LaunchAdapter (private var launches: List<Launch>, private val listener: OnClickListener):
     RecyclerView.Adapter<LaunchAdapter.ViewHolder>() {
@@ -31,12 +33,21 @@ class LaunchAdapter (private var launches: List<Launch>, private val listener: O
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        println(launches[position])
+
         val launch = launches[position]
         with(holder){
             setListener(launch)
             binding.missionNameTextView.text = launch.name
             binding.rocketNameTextView.text = launch.flightNumber.toString()
-            binding.dateTextView.text = launch.dateUtc
+
+            if(launch.staticFireDateUtc.isNullOrBlank()) {
+                binding.dateTextView.text = "---"
+            } else
+            {
+                binding.dateTextView.text = launch.staticFireDateUtc!!.take(10)
+            }
+
             Glide.with(context)
                 .load(launch.links?.patch?.large)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
