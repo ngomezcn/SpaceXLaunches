@@ -24,9 +24,26 @@ class Repository {
             override fun onResponse(call: Call<List<Launch>?>, response: Response<List<Launch>?>) {
                 if (response != null && response.isSuccessful) {
                     dataInfo.value = response.body()
+                    println("RECV DATA")
+                    println(response.body().toString())
                 }
             }
         })
+
+        /*call.enqueue(object: Callback<List<Launch>> {
+
+            override fun onFailure(call: Call<List<Launch>>, t: Throwable) {
+                Log.e("ERROR", t.message.toString())
+                dataInfo.postValue(null)
+            }
+            override fun onResponse(call: Call<List<Launch>?>, response: Response<List<Launch>?>) {
+                if (response != null && response.isSuccessful) {
+                    dataInfo.value = response.body()
+                    println("RECV DATA")
+                    println(response.body().toString())
+                }
+            }
+        })*/
     }
 }
 

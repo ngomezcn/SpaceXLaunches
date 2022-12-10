@@ -17,10 +17,9 @@ class ViewModel : ViewModel() {
     fun fetchData(url: String){
         repository.fetchData(url)
         android.os.Handler().postDelayed({
-            println("ACTUALIZAMOS DATA CON DATOS RECIBIDOS")
             data.postValue(repository.dataInfo.value)
             println(data.value)
-        },1000)
+        },3000)
     }
 
     fun setLaunch(launch: Launch){
