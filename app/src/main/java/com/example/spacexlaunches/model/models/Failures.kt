@@ -1,9 +1,10 @@
 package com.example.spacexlaunches.model.models
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 
 data class Failures (
-    @SerialName("time"     ) var time     : Int?    = null,
-    @SerialName("altitude" ) var altitude : String? = null,
-    @SerialName("reason"   ) var reason   : String? = null
+    @SerializedName("time"     ) var time     : Int?    = null,
+    @SerializedName("altitude" ) var altitude : String? = null,
+    @SerializedName("reason"   ) var reason   : String? = null
 )

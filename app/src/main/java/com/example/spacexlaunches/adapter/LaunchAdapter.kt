@@ -41,15 +41,15 @@ class LaunchAdapter (private var launches: List<Launch>, private val listener: O
             binding.missionNameTextView.text = launch.name
             binding.rocketNameTextView.text = launch.flightNumber.toString()
 
-            if(launch.staticFireDateUtc.isNullOrBlank()) {
+            if(launch.dateUtc.isNullOrBlank()) {
                 binding.dateTextView.text = "---"
             } else
             {
-                binding.dateTextView.text = launch.staticFireDateUtc!!.take(10)
+                binding.dateTextView.text = launch.dateUtc!!.take(10)
             }
 
             Glide.with(context)
-                .load(launch.links?.patch?.large)
+                .load(launch.links?.patch?.small)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .circleCrop()

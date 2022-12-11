@@ -1,12 +1,13 @@
 package com.example.spacexlaunches.model.models
 
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 
 
 data class Crew (
 
-    @SerialName("crew" ) var crew : String? = null,
-    @SerialName("role" ) var role : String? = null
+    @SerializedName("crew" ) var crew : String? = null,
+    @SerializedName("role" ) var role : String? = null
 
 )

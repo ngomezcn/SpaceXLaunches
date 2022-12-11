@@ -1,13 +1,14 @@
 package com.example.spacexlaunches.model.models
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 
 @Parcelize
 data class Links (
 
-    @SerialName("patch"      ) var patch     : Patch?  = Patch(),
+    @SerializedName("patch"      ) var patch     : Patch?  = Patch(),
     /*@SerialName("reddit"     ) var reddit    : Reddit? = Reddit(),
     @SerialName("flickr"     ) var flickr    : Flickr? = Flickr(),
     @SerialName("presskit"   ) var presskit  : String? = null,

@@ -1,11 +1,12 @@
 package com.example.spacexlaunches.model.models
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 
 data class Fairings (
 
-    @SerialName("reused"           ) var reused          : Boolean?          = null,
-    @SerialName("recovery_attempt" ) var recoveryAttempt : Boolean?          = null,
-    @SerialName("recovered"        ) var recovered       : Boolean?          = null,
-    @SerialName("ships"            ) var ships           : ArrayList<String> = arrayListOf()
+    @SerializedName("reused"           ) var reused          : Boolean?          = null,
+    @SerializedName("recovery_attempt" ) var recoveryAttempt : Boolean?          = null,
+    @SerializedName("recovered"        ) var recovered       : Boolean?          = null,
+    @SerializedName("ships"            ) var ships           : ArrayList<String> = arrayListOf()
 )

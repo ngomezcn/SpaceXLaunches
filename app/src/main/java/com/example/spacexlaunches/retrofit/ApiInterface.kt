@@ -23,7 +23,6 @@ interface ApiInterface {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
-
             return retrofit.create(ApiInterface::class.java)
         }
     }

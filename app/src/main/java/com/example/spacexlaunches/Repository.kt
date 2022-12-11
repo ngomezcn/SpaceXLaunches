@@ -2,11 +2,13 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spacexlaunches.model.models.Launch
 import com.example.spacexlaunches.retrofit.ApiInterface
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Url
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 class Repository {
     private val apiInterface = ApiInterface.create()
