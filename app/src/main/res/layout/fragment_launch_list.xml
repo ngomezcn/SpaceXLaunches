@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:fontFamily="@font/alata"
-        android:text="@string/app_title"
+        android:text="Missions list"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,14 +26,14 @@
         android:layout_height="wrap_content"
         android:hint="@string/search_hint"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
 
         app:startIconDrawable="@drawable/search_drawable"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appTitle_TextView"
-        app:layout_constraintEnd_toStartOf="@+id/pin_ImageView">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_TextInput"
@@ -43,7 +43,7 @@
             android:fontFamily="@font/alata" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/pin_ImageView"
         android:layout_width="45sp"
         android:layout_height="0dp"
@@ -52,7 +52,7 @@
 
         app:layout_constraintBottom_toBottomOf="@+id/search_LayoutTextInput"
         app:layout_constraintTop_toTopOf="@+id/search_LayoutTextInput"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />-->
 
     <ProgressBar
         android:id="@+id/progress_bar"

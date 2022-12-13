@@ -13,6 +13,9 @@ interface ApiInterface {
     @GET()
     fun getData(@Url url: String): Call<List<Launch>>
 
+    //@GET()
+    //suspend fun getData(@Url url: String): Response<List<Launch>>
+
     companion object {
         val BASE_URL = "https://api.spacexdata.com/v5/"
 

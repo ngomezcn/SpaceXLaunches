@@ -1,4 +1,5 @@
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.spacexlaunches.model.models.Launch
 import com.example.spacexlaunches.retrofit.ApiInterface
@@ -15,6 +16,19 @@ class Repository {
     var dataInfo = MutableLiveData<List<Launch>>()
 
     fun fetchData(url: String) {
+
+        /*val response = apiInterface.getData(url)
+        if (response.isSuccessful) {
+            dataInfo.value = response.body()
+        } else
+        {
+            dataInfo.value = null
+        }
+
+        dataInfo.value = response.body()
+        return dataInfo*/
+
+
         val call = apiInterface.getData(url)
 
         call.enqueue(object: Callback<List<Launch>> {
@@ -31,21 +45,6 @@ class Repository {
                 }
             }
         })
-
-        /*call.enqueue(object: Callback<List<Launch>> {
-
-            override fun onFailure(call: Call<List<Launch>>, t: Throwable) {
-                Log.e("ERROR", t.message.toString())
-                dataInfo.postValue(null)
-            }
-            override fun onResponse(call: Call<List<Launch>?>, response: Response<List<Launch>?>) {
-                if (response != null && response.isSuccessful) {
-                    dataInfo.value = response.body()
-                    println("RECV DATA")
-                    println(response.body().toString())
-                }
-            }
-        })*/
     }
 }
 

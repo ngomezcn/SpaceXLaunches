@@ -5,13 +5,6 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/searchLaunch"
-        android:orderInCategory="200"
-        android:title="Search"
-        android:icon="@drawable/search_drawable"
-        app:showAsAction="ifRoom">
-    </item>
-    <item
         android:id="@+id/action_user"
         android:orderInCategory="300"
         android:title="User"

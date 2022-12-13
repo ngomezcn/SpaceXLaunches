@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.example.spacexlaunches.databinding.FragmentDetailBinding
 import com.example.spacexlaunches.viewmodel.ViewModel
 
@@ -23,13 +24,25 @@ class DetailFragment : Fragment() {
 
         viewModel.actualLaunch.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.missionNameTextView.text = it.name
-            binding.missionComment.text = it.name
+
+            if(it.links != null) {
+                if(it.links!!.patch != null ) {
+                   if(it.links!!.patch!!.large != null) {
+                       Glide.with(this).load(it.links!!.patch!!.large).into(binding.badgeImageView);
+                   }
+                }
+            }
+
+
+
+            //binding.
+            /*binding.missionComment.text = it.name
             binding.launchSiteTextView.text = it.name
             binding.payloadTextView.text = it.name
             binding.payloadKGTextView.text = it.name
             binding.orbitTextView.text = it.name
             binding.orbitPeriapsisTextView.text = it.name
-            binding.orbitApoapsisTextView.text = it.name
+            binding.orbitApoapsisTextView.text = it.name*/
         })
     }
 }

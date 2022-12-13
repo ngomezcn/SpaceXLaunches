@@ -1,71 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.DetailFragment"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.DetailFragment"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/missionName_textView"
+    <ImageView
+        android:id="@+id/badge_ImageView"
+        android:src="@drawable/default_image_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="350dp"
+        android:padding="20dp"
+        android:background="@color/black_x"
 
-    <TextView
-        android:id="@+id/missionDate_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="adasd" />
+        android:layout_height="0dp"
+        android:fillViewport="false"
+        android:layout_marginTop="-50dp"
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+        app:layout_constraintTop_toBottomOf="@id/badge_ImageView"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/missionComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/launchSite_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
 
-    <TextView
-        android:id="@+id/payload_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
 
-    <TextView
-        android:id="@+id/payloadKG_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+            app:layout_constraintTop_toBottomOf="@id/badge_ImageView"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/orbit_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+            <TextView
+                android:id="@+id/missionName_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
+                android:text="Crew-5"
+                android:textColor="@color/black_x"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/orbitPeriapsis_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+            <TextView
+                android:id="@+id/missionDate_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
 
-    <TextView
-        android:id="@+id/orbitApoapsis_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mission details" />
+                android:textStyle="bold"
+                android:text="2002-03-09"
+                app:layout_constraintTop_toBottomOf="@id/missionName_textView" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/missionDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Mission details"
+                app:layout_constraintTop_toBottomOf="@id/missionDate_textView" />
+
+            <TextView
+                android:id="@+id/message_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black_x"
+                android:text="Engine failure at 33 seconds and loss of vehicle."
+                app:layout_constraintTop_toBottomOf="@id/missionDetails"
+
+                />
+
+            <TextView
+                android:id="@+id/launchSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Launch site:"
+
+                app:layout_constraintTop_toBottomOf="@id/message_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/launchSite_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="Kennedy Space Center"
+                app:layout_constraintStart_toEndOf="@id/launchSite"
+                app:layout_constraintTop_toTopOf="@id/launchSite" />
+
+            <TextView
+                android:id="@+id/launchDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Launch Date UTC:"
+
+                app:layout_constraintTop_toBottomOf="@id/launchSite_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/launchDate_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="2022-10-05T16:00:00.000Z"
+                app:layout_constraintStart_toEndOf="@id/launchDate"
+                app:layout_constraintTop_toTopOf="@id/launchDate" />
+
+            <TextView
+                android:id="@+id/flightNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Flight number:"
+
+                app:layout_constraintTop_toBottomOf="@id/launchDate_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/flightNumber_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="5"
+                app:layout_constraintStart_toEndOf="@id/flightNumber"
+                app:layout_constraintTop_toTopOf="@id/flightNumber" />
+
+            <TextView
+                android:id="@+id/successfulLanding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Successful landing:"
+
+                app:layout_constraintTop_toBottomOf="@id/flightNumber_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/successfulLanding_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="Yes"
+                app:layout_constraintStart_toEndOf="@id/successfulLanding"
+                app:layout_constraintTop_toTopOf="@id/successfulLanding" />
+
+            <TextView
+                android:id="@+id/rocketName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Rocket name:"
+
+                app:layout_constraintTop_toBottomOf="@id/successfulLanding"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/rocketName_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="Falcon 9"
+                app:layout_constraintStart_toEndOf="@id/rocketName"
+                app:layout_constraintTop_toTopOf="@id/rocketName" />
+
+            <TextView
+                android:id="@+id/rocketSuccessRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Rocket Success Rate:"
+
+                app:layout_constraintTop_toBottomOf="@id/rocketName_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/rocketSuccessRate_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="98%"
+                app:layout_constraintStart_toEndOf="@id/rocketSuccessRate"
+                app:layout_constraintTop_toTopOf="@id/rocketSuccessRate" />
+
+            <TextView
+                android:id="@+id/missionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_x"
+                android:text="Mission status:"
+
+                app:layout_constraintTop_toBottomOf="@id/rocketSuccessRate_TextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/missionStatus_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black_x"
+                android:text="Successful"
+                app:layout_constraintStart_toEndOf="@id/missionStatus"
+                app:layout_constraintTop_toTopOf="@id/missionStatus" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="See more"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:drawableLeft="@drawable/book"
+                android:textAllCaps="false"
+
+                app:layout_constraintStart_toStartOf="@id/missionName_textView"
+                app:layout_constraintTop_toBottomOf="@id/rocketSuccessRate_TextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout >
