@@ -3,6 +3,8 @@ package com.example.spacexlaunches
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.spacexlaunches.databinding.ActivityMainBinding
@@ -30,5 +32,10 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu, menu)
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    fun favBtnClicked() {
+        Toast.makeText(this,"Hoa", Toast.LENGTH_SHORT).show()
+        println(navController.currentDestination)
     }
 }

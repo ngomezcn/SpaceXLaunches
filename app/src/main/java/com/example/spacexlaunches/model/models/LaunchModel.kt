@@ -1,14 +1,8 @@
 package com.example.spacexlaunches.model.models
 
-import android.os.Parcel
-import android.os.Parcelable
-import com.example.spacexlaunches.model.models.Links
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-data class Launch (
+
+data class LaunchModel (
 
    // @SerializedName("fairings"              ) var fairings           : Fairings?           = Fairings(),
     @SerializedName("links"                 ) var links              : Links?              = Links(),
@@ -36,4 +30,6 @@ data class Launch (
     @SerializedName("auto_update"           ) var autoUpdate         : Boolean?            = null,
     @SerializedName("tbd"                   ) var tbd                : Boolean?            = null,
     @SerializedName("launch_library_id"     ) var launchLibraryId    : String?             = null,
-    @SerializedName("id"                    ) var id                 : String?             = null)
+    @SerializedName("id"                    ) var id                 : String?             = null,
+    val isFav : Boolean = false
+)

@@ -10,12 +10,9 @@ import android.content.Context
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.R
-import com.example.spacexlaunches.model.models.Launch
-import okhttp3.internal.notify
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.spacexlaunches.model.models.LaunchModel
 
-class LaunchAdapter (private var launches: List<Launch>, private val listener: OnClickListener):
+class LaunchAdapter (private var launches: List<LaunchModel>, private val listener: OnClickListener):
     RecyclerView.Adapter<LaunchAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -26,7 +23,7 @@ class LaunchAdapter (private var launches: List<Launch>, private val listener: O
         return ViewHolder(view)
     }
 
-    fun setList(newLaunches: List<Launch>) {
+    fun setList(newLaunches: List<LaunchModel>) {
         println(launches)
         launches = newLaunches
         notifyDataSetChanged()
@@ -64,7 +61,7 @@ class LaunchAdapter (private var launches: List<Launch>, private val listener: O
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ItemLayoutBinding.bind(view)
 
-        fun setListener(launch: Launch){
+        fun setListener(launch: LaunchModel){
             binding.root.setOnClickListener {
                 listener.onClick(launch)
             }

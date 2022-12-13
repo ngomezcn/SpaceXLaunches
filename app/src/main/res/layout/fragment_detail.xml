@@ -19,6 +19,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!--<ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_arrow_back"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>-->
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -249,7 +260,6 @@
                 android:text="See more"
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
-                android:drawableRight="@drawable/right_arrow"
                 android:drawableLeft="@drawable/book"
                 android:textAllCaps="false"
 

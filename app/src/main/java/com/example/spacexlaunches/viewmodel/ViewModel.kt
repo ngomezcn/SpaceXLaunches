@@ -2,13 +2,13 @@ package com.example.spacexlaunches.viewmodel
 
 import Repository
 import androidx.lifecycle.MutableLiveData
-import com.example.spacexlaunches.model.models.Launch
+import com.example.spacexlaunches.model.models.LaunchModel
 import androidx.lifecycle.ViewModel
 
 class ViewModel : ViewModel() {
     val repository = Repository()
-    var data = MutableLiveData<List<Launch>>()
-    var actualLaunch = MutableLiveData<Launch>()
+    var data = MutableLiveData<List<LaunchModel>>()
+    var actualLaunch = MutableLiveData<LaunchModel>()
 
     init {
         fetchData("launches")
@@ -22,7 +22,7 @@ class ViewModel : ViewModel() {
         },3000)
     }
 
-    fun setLaunch(launch: Launch){
+    fun setLaunch(launch: LaunchModel){
         actualLaunch.value = launch
     }
 }

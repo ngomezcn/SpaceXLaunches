@@ -1,6 +1,6 @@
 package com.example.spacexlaunches.retrofit
 
-import com.example.spacexlaunches.model.models.Launch
+import com.example.spacexlaunches.model.models.LaunchModel
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ import retrofit2.http.Url
 interface ApiInterface {
 
     @GET()
-    fun getData(@Url url: String): Call<List<Launch>>
+    fun getData(@Url url: String): Call<List<LaunchModel>>
 
     //@GET()
     //suspend fun getData(@Url url: String): Response<List<Launch>>

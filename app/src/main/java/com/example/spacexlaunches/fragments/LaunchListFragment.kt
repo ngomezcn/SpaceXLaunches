@@ -1,9 +1,7 @@
 package com.example.spacexlaunches.fragments
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -15,9 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.adapter.LaunchAdapter
 import com.example.spacexlaunches.databinding.FragmentLaunchListBinding
-import com.example.spacexlaunches.model.models.Launch
+import com.example.spacexlaunches.model.models.LaunchModel
 import com.example.spacexlaunches.viewmodel.ViewModel
-import java.util.*
 
 class LaunchListFragment : Fragment(), OnClickListener {
 
@@ -49,7 +46,7 @@ class LaunchListFragment : Fragment(), OnClickListener {
         })
     }
 
-    private fun setUpRecyclerView(myData: List<Launch>) {
+    private fun setUpRecyclerView(myData: List<LaunchModel>) {
         launchAdapter = LaunchAdapter(myData, this)
         binding.recyclerView.apply {
             setHasFixedSize(true) //Optimitza el rendiment de l’app
@@ -59,7 +56,7 @@ class LaunchListFragment : Fragment(), OnClickListener {
         binding.progressBar.visibility = View.GONE
     }
 
-    override fun onClick(launch: Launch) {
+    override fun onClick(launch: LaunchModel) {
         viewModel.setLaunch(launch)
         findNavController().navigate(com.example.spacexlaunches.R.id.action_launchList_to_launchDetail)
     }

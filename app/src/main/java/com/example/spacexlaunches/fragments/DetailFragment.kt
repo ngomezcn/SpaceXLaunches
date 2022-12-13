@@ -33,8 +33,6 @@ class DetailFragment : Fragment() {
                 }
             }
 
-
-
             //binding.
             /*binding.missionComment.text = it.name
             binding.launchSiteTextView.text = it.name
