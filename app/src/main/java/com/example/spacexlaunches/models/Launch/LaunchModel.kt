@@ -1,4 +1,4 @@
-package com.example.spacexlaunches.model.models
+package com.example.spacexlaunches.models.Launch
 
 import com.google.gson.annotations.SerializedName
 
@@ -12,13 +12,13 @@ data class LaunchModel (
     @SerializedName("window"                ) var window             : Int?                = null,
     @SerializedName("rocket"                ) var rocket             : String?             = null,
     @SerializedName("success"               ) var success            : Boolean?            = null,
-   // @SerializedName("failures"              ) var failures           : ArrayList<Failures> = arrayListOf(),
+    @SerializedName("failures"              ) var failures           : ArrayList<Failures> = arrayListOf(),
     @SerializedName("details"               ) var details            : String?             = null,
    // @SerializedName("crew"                  ) var crew               : ArrayList<String>   = arrayListOf(),
     //@SerializedName("ships"                 ) var ships              : ArrayList<String>   = arrayListOf(),
    // @SerializedName("capsules"              ) var capsules           : ArrayList<String>   = arrayListOf(),
    // @SerializedName("payloads"              ) var payloads           : ArrayList<String>   = arrayListOf(),
-   // @SerializedName("launchpad"             ) var launchpad          : String?             = null,
+    @SerializedName("launchpad"             ) var launchpad          : String?             = null,
     @SerializedName("flight_number"         ) var flightNumber       : Int?                = null,
     @SerializedName("name"                  ) var name               : String?             = null,
     @SerializedName("date_utc"              ) var dateUtc            : String?             = null,
@@ -26,7 +26,7 @@ data class LaunchModel (
     @SerializedName("date_local"            ) var dateLocal          : String?             = null,
     @SerializedName("date_precision"        ) var datePrecision      : String?             = null,
     @SerializedName("upcoming"              ) var upcoming           : Boolean?            = null,
-    //@SerializedName("cores"                 ) var cores              : ArrayList<Cores>    = arrayListOf(),
+    @SerializedName("cores"                 ) var cores              : ArrayList<Cores>    = arrayListOf(),
     @SerializedName("auto_update"           ) var autoUpdate         : Boolean?            = null,
     @SerializedName("tbd"                   ) var tbd                : Boolean?            = null,
     @SerializedName("launch_library_id"     ) var launchLibraryId    : String?             = null,

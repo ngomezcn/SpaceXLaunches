@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:fontFamily="@font/alata"
-        android:text="Missions list"
+        android:text="@string/missions_list"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,6 +39,7 @@
             android:id="@+id/search_TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:background="@drawable/layout_search_rounded_bg"
             android:fontFamily="@font/alata" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +86,4 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

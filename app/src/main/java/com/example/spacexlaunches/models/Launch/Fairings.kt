@@ -1,7 +1,6 @@
-package com.example.spacexlaunches.model.models
+package com.example.spacexlaunches.models.Launch
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.SerialName
 
 data class Fairings (
 

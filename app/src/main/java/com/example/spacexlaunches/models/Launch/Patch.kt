@@ -1,9 +1,8 @@
-package com.example.spacexlaunches.model.models
+package com.example.spacexlaunches.models.Launch
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.SerialName
 
 @Parcelize
 data class Patch (

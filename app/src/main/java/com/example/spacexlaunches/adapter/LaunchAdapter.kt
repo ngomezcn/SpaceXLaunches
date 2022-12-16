@@ -10,7 +10,7 @@ import android.content.Context
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.R
-import com.example.spacexlaunches.model.models.LaunchModel
+import com.example.spacexlaunches.models.Launch.LaunchModel
 
 class LaunchAdapter (private var launches: List<LaunchModel>, private val listener: OnClickListener):
     RecyclerView.Adapter<LaunchAdapter.ViewHolder>() {
@@ -45,12 +45,23 @@ class LaunchAdapter (private var launches: List<LaunchModel>, private val listen
                 binding.dateTextView.text = launch.dateUtc!!.take(10)
             }
 
-            Glide.with(context)
-                .load(launch.links?.patch?.small)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .circleCrop()
-                .into(binding.launchImageImageView)
+            if(launch.links!!.patch!!.small != null)
+            {
+                Glide.with(context)
+                    .load(launch.links?.patch?.small)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .circleCrop()
+                    .into(binding.launchImageImageView)
+            } else
+            {
+                Glide.with(context)
+                    .load("https://www.spacex.com/static/images/share.jpg")
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .circleCrop()
+                    .into(binding.launchImageImageView)
+            }
         }
     }
 

@@ -14,5 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-
+    <style name="Theme.App.MySplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/launch_screen_img</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.SpaceXLaunches</item>
+    </style>
 </resources>

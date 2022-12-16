@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun favBtnClicked() {
-        Toast.makeText(this,"Hoa", Toast.LENGTH_SHORT).show()
         println(navController.currentDestination)
     }
 }
