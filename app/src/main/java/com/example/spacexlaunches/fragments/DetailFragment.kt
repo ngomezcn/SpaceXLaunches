@@ -109,7 +109,7 @@ class DetailFragment : Fragment() {
                 binding.missionStatusTextView.text = "Unsuccessful"
         } else
         {
-            binding.missionStatusTextView.text = "In progress"
+            binding.missionStatusTextView.text = "No data"
         }
 
         // Flight number
