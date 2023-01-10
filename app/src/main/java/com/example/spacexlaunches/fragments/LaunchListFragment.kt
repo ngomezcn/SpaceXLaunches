@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.spacexlaunches.OnClickListener
+import com.example.spacexlaunches.R
 import com.example.spacexlaunches.adapter.LaunchAdapter
 import com.example.spacexlaunches.databinding.FragmentLaunchListBinding
 import com.example.spacexlaunches.models.Launch.LaunchModel
@@ -75,6 +77,21 @@ class LaunchListFragment : Fragment(), OnClickListener {
                 }
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_favBtn -> println("HELLO FROM LIST ACTIVITY")
+        }
+
+        return false
+    }
+
+    private fun loadLocalDB() {
+
+        val a = listOf<LaunchModel>(LaunchModel())
+
+        setUpRecyclerView(a)
     }
 
     private fun setUpRecyclerView(myData: List<LaunchModel>) {

@@ -4,11 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import com.example.spacexlaunches.OnClickListener
+import com.example.spacexlaunches.R
 import com.example.spacexlaunches.databinding.FragmentDetailBinding
 import com.example.spacexlaunches.models.Launch.LaunchModel
 import com.example.spacexlaunches.models.LaunchpadModel
@@ -16,7 +19,7 @@ import com.example.spacexlaunches.models.Rocket.RocketModel
 import com.example.spacexlaunches.viewmodel.ViewModel
 
 
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(), OnClickListener {
     lateinit var binding: FragmentDetailBinding
     private val viewModel: ViewModel by activityViewModels()
 
@@ -25,6 +28,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater)
+
         return binding.root
     }
 
@@ -134,4 +138,9 @@ class DetailFragment : Fragment() {
     private fun setLaunchpadData(it: LaunchpadModel) {
         binding.launchSiteTextView.text = it.name
     }
+
+    override fun onClick(launch: LaunchModel) {
+    }
+
+
 }

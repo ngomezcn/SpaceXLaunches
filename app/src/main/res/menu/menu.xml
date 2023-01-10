@@ -5,7 +5,8 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/favBtn"
+        android:id="@+id/menu_favBtn"
+        android:onClick="onFavClick"
         android:orderInCategory="300"
         android:title="User"
         android:icon="@drawable/fav_pin"
