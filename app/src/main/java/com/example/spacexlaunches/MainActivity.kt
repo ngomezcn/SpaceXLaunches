@@ -3,18 +3,14 @@ package com.example.spacexlaunches
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.spacexlaunches.databinding.ActivityMainBinding
 import com.example.spacexlaunches.room.LaunchApplication
 import com.example.spacexlaunches.room.LaunchEntity
+import com.example.spacexlaunches.room.RocketEntity
 import com.example.spacexlaunches.viewmodel.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -54,12 +50,28 @@ class MainActivity : AppCompatActivity() {
         if((findNavController(R.id.fragment_container_view).currentDestination?.id ?: -1) == R.id.detailFragment) {
             println(" LAUNCH LIST ESTA ${viewModel.launchList.value!!.size}")
 
-            val contactName = "ZZZ"
-            val phoneNumber = "NT"
-            val newContact = LaunchEntity(name = contactName, phoneNumber = phoneNumber)
+            val launch = viewModel.actualLaunch.value!!
+            val rocket = viewModel.rocket.value!!
+
+            val rocketEntity = RocketEntity(
+                name = rocket.name,
+                success_rate_pct = rocket.success_rate_pct,
+                cost_per_launch = rocket.cost_per_launch,
+            )
+
+            val launchEntity = LaunchEntity(
+                dateUtc = launch.dateUtc!!,
+                failures_reason = launch.failures.first().reason!!,
+                details = launch.details!!,
+                success = launch.success!!,
+                flightNumber = launch.flightNumber!!,
+                links_patch_large = launch.links!!.patch!!.large!!,
+                rocketId = 0
+                )
 
             CoroutineScope(Dispatchers.IO).launch {
-                LaunchApplication.database.launchDao().add(newContact)
+                LaunchApplication.database.launchDao().add(launchEntity)
+                LaunchApplication.database.rocketDao().add(rocketEntity)
 
             }
         }
