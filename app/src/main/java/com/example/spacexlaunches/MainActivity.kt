@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.spacexlaunches.databinding.ActivityMainBinding
-import com.example.spacexlaunches.room.LaunchApplication
-import com.example.spacexlaunches.room.LaunchEntity
-import com.example.spacexlaunches.room.RocketEntity
+import com.example.spacexlaunches.room.Entities.LaunchEntity
+import com.example.spacexlaunches.room.Entities.RocketEntity
+import com.example.spacexlaunches.room.LaunchesApplication
 import com.example.spacexlaunches.viewmodel.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -70,9 +70,9 @@ class MainActivity : AppCompatActivity() {
                 )
 
             CoroutineScope(Dispatchers.IO).launch {
-                LaunchApplication.database.launchDao().add(launchEntity)
-                LaunchApplication.database.rocketDao().add(rocketEntity)
-
+                //
+                val rocketId : Long = LaunchesApplication.database.rocketDao().add(rocketEntity)
+                LaunchesApplication.database.launchDao().add(launchEntity)
             }
         }
     }

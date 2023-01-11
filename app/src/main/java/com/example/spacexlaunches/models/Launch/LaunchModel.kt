@@ -1,5 +1,9 @@
 package com.example.spacexlaunches.models.Launch
 
+import android.app.Application
+import androidx.room.Dao
+import androidx.room.Entity
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
 
 data class LaunchModel (
@@ -33,3 +37,4 @@ data class LaunchModel (
     @SerializedName("id"                    ) var id                 : String?             = null,
     val isFav : Boolean = false
 )
+
