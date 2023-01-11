@@ -1,5 +1,6 @@
 package com.example.spacexlaunches.fragments
 
+import android.R.color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -17,8 +19,13 @@ import com.example.spacexlaunches.OnClickListener
 import com.example.spacexlaunches.R
 import com.example.spacexlaunches.adapter.LaunchAdapter
 import com.example.spacexlaunches.databinding.FragmentLaunchListBinding
+import com.example.spacexlaunches.models.Launch.Failures
 import com.example.spacexlaunches.models.Launch.LaunchModel
+import com.example.spacexlaunches.room.LaunchesApplication
 import com.example.spacexlaunches.viewmodel.ViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class LaunchListFragment : Fragment(), OnClickListener {
@@ -80,8 +87,16 @@ class LaunchListFragment : Fragment(), OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val normalDrawable = item.icon
+        val wrapDrawable = DrawableCompat.wrap(normalDrawable)
+        DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.favBlueColor))
+
+
+        item.setIcon(wrapDrawable)
+
+        println("FRAGMENT LaunchList")
         when(item.itemId) {
-            R.id.menu_favBtn -> println("HELLO FROM LIST ACTIVITY")
+            R.id.menu_favBtn -> loadLocalDB()
         }
 
         return false
@@ -89,9 +104,33 @@ class LaunchListFragment : Fragment(), OnClickListener {
 
     private fun loadLocalDB() {
 
-        val a = listOf<LaunchModel>(LaunchModel())
+        val models = mutableListOf<LaunchModel>()
 
-        setUpRecyclerView(a)
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val entities = LaunchesApplication.database.launchDao().getAll()
+
+            for (i in entities) {
+                val launch = LaunchModel()
+
+                launch.name = i.name
+                launch.dateUtc = i.dateUtc
+
+                val failures = Failures()
+                failures.reason = i.failures_reason
+                launch.failures.add(failures)
+
+                launch.details = i.details
+                launch.success = i.success
+                launch.flightNumber = i.flightNumber
+                launch.links!!.patch!!.large = i.links_patch_large
+                launch.links!!.patch!!.small = i.links_patch_small
+
+                models.add(launch)
+            }
+        }
+
+        setUpRecyclerView(models)
     }
 
     private fun setUpRecyclerView(myData: List<LaunchModel>) {

@@ -11,6 +11,6 @@ class LaunchesApplication: Application() {
         super.onCreate()
         database = Room.databaseBuilder(this,
             LaunchesDatabase::class.java,
-            "LaunchesDatabase7").build()
+            "LaunchessDatabase_ITB1").build()
     }
 }

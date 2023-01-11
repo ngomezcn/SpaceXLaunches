@@ -19,7 +19,7 @@ import com.example.spacexlaunches.models.Rocket.RocketModel
 import com.example.spacexlaunches.viewmodel.ViewModel
 
 
-class DetailFragment : Fragment(), OnClickListener {
+class DetailFragment : Fragment() {
     lateinit var binding: FragmentDetailBinding
     private val viewModel: ViewModel by activityViewModels()
 
@@ -138,9 +138,4 @@ class DetailFragment : Fragment(), OnClickListener {
     private fun setLaunchpadData(it: LaunchpadModel) {
         binding.launchSiteTextView.text = it.name
     }
-
-    override fun onClick(launch: LaunchModel) {
-    }
-
-
 }

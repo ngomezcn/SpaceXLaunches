@@ -6,7 +6,7 @@ import com.example.spacexlaunches.room.Entities.LaunchEntity
 @Dao
 interface LaunchDAO {
     @Query("SELECT * FROM LaunchEntity")
-    fun getAll(): MutableList<LaunchEntity>
+    fun getAll(): List<LaunchEntity>
     @Insert
     fun add(launchEntity: LaunchEntity)
     @Update

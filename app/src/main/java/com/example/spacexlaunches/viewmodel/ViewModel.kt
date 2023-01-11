@@ -32,7 +32,10 @@ class ViewModel : ViewModel() {
     private fun fetchMissionList(url: String) {
 
         viewModelScope.launch {
-            val response = withContext( Dispatchers .IO) { repository.getAllMissions(url) }
+            val response = withContext( Dispatchers .IO) {
+                repository.getAllMissions(url)
+            }
+
             if(response.isSuccessful){
                 launchList.postValue(response.body())
             }
