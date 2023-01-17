@@ -2,6 +2,8 @@ package com.example.spacexlaunches.viewmodel
 
 import Repository
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.MutableLiveData
 import com.example.spacexlaunches.models.Launch.LaunchModel
 import androidx.lifecycle.ViewModel
@@ -15,6 +17,10 @@ import kotlinx.coroutines.withContext
 class ViewModel : ViewModel() {
     val repository = Repository()
     var launchList = MutableLiveData<List<LaunchModel>>()
+
+    var optionsMenu = MutableLiveData<Menu>()
+
+    var pinnedSearch = MutableLiveData<Boolean>( false )
 
     var searchLaunchList = MutableLiveData<MutableList<LaunchModel>>(mutableListOf())
 

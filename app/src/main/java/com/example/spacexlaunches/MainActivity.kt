@@ -3,6 +3,7 @@ package com.example.spacexlaunches
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
 
+        viewModel.optionsMenu.postValue(menu)
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         println("onOptionsItemSelected")
 
         if((findNavController(R.id.fragment_container_view).currentDestination?.id ?: -1) == R.id.detailFragment) {
-            val launch = viewModel.actualLaunch.value!!
+            val oLaunch = viewModel.actualLaunch.value!!
             val rocket = viewModel.rocket.value!!
 
             /*val rocketEntity = RocketEntity(
@@ -54,18 +57,20 @@ class MainActivity : AppCompatActivity() {
             )*/
 
             val launchEntity = LaunchEntity(
-                name = launch.name!!,
-                dateUtc = launch.dateUtc!!,
-                failures_reason = launch.failures.first().reason!!,
-                details = launch.details!!,
-                success = launch.success!!,
-                flightNumber = launch.flightNumber!!,
-                links_patch_large = launch.links!!.patch!!.large!!,
-                links_patch_small = launch.links!!.patch!!.small!!,
+                name = oLaunch.name,
+                dateUtc = "sample", //oLaunch.dateUtc,
+                failures_reason = "",
+                details = "sample", //oLaunch.details,
+                success = true, //oLaunch.success,
+                flightNumber = oLaunch.flightNumber,
+                links_patch_large = "sample", //oLaunch.links?.patch?.large,
+                links_patch_small = "sample", //oLaunch.links?.patch?.small,
                 rocketId = 0
             )
 
-            println("NEW FAV: $launch")
+            if(oLaunch.failures.size > 1) {
+                launchEntity.failures_reason = oLaunch.failures.first().reason!!
+            }
 
             CoroutineScope(Dispatchers.IO).launch {
                 //val rocketId : Long = LaunchesApplication.database.rocketDao().add(rocketEntity)

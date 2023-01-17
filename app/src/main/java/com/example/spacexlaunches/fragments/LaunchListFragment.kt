@@ -58,7 +58,6 @@ class LaunchListFragment : Fragment(), OnClickListener {
             }
         })
 
-
         binding.searchTextInput.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -87,18 +86,31 @@ class LaunchListFragment : Fragment(), OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val normalDrawable = item.icon
-        val wrapDrawable = DrawableCompat.wrap(normalDrawable)
-        DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.favBlueColor))
 
+        if(viewModel.pinnedSearch.value!! == false)
+        {
+            viewModel.pinnedSearch.value = true
 
-        item.setIcon(wrapDrawable)
+            view
 
-        println("FRAGMENT LaunchList")
-        when(item.itemId) {
-            R.id.menu_favBtn -> loadLocalDB()
+            val normalDrawable = item.icon
+            val wrapDrawable = DrawableCompat.wrap(normalDrawable)
+            DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.favBlueColor))
+            item.setIcon(wrapDrawable)
+            when(item.itemId) {
+                R.id.menu_favBtn -> loadLocalDB()
+            }
+        } else
+        {
+            viewModel.pinnedSearch.value = false
+            val normalDrawable = item.icon
+            val wrapDrawable = DrawableCompat.wrap(normalDrawable)
+            DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.white))
+            item.setIcon(wrapDrawable)
+
+            val models = mutableListOf<LaunchModel>()
+            setUpRecyclerView(viewModel.launchList.value!!)
         }
-
         return false
     }
 
