@@ -35,7 +35,7 @@ class LaunchAdapter (private var launches: List<LaunchModel>, private val listen
         val launch = launches[position]
         with(holder){
             setListener(launch)
-            binding.missionNameTextView.text = launch.name
+            binding.missionNameTextView.text = launch.name?.take(17) ?: "-"
             binding.rocketNameTextView.text = launch.flightNumber.toString()
 
             if(launch.dateUtc.isNullOrBlank()) {
