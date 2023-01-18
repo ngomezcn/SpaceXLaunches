@@ -12,4 +12,11 @@
     <color name="black_char_x">#200E32</color>
     <color name="blue_x">#005288</color>
     <color name="favBlueColor">#013461</color>
+
+
+    <selector name="ITB" xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:state_checked="true"  android:color="@color/favBlueColor" />
+        <item android:state_checked="false" android:color="@color/white" />
+    </selector>
+
 </resources>
