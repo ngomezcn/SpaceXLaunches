@@ -3,7 +3,6 @@ package com.example.spacexlaunches
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -38,17 +37,19 @@ class MainActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
 
-        viewModel.optionsMenu.postValue(menu)
+        //viewModel.optionspostValueMenu.postValue(menu)
 
+        if (menu != null) {
+            viewModel.pinnedItem.postValue(menu.findItem(R.id.menu_favBtn))
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        println("onOptionsItemSelected")
 
         if((findNavController(R.id.fragment_container_view).currentDestination?.id ?: -1) == R.id.detailFragment) {
             val oLaunch = viewModel.actualLaunch.value!!
-            val rocket = viewModel.rocket.value!!
+//            val rocket = viewModel.rocket.value!!
 
             /*val rocketEntity = RocketEntity(
                 name = rocket.name,

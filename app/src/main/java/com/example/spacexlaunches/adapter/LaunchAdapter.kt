@@ -35,7 +35,8 @@ class LaunchAdapter (private var launches: List<LaunchModel>, private val listen
         val launch = launches[position]
         with(holder){
             setListener(launch)
-            binding.missionNameTextView.text = launch.name?.take(17) ?: "-"
+            binding.missionNameTextView.text = launch.name?.take(18) ?: "-"
+
             binding.rocketNameTextView.text = launch.flightNumber.toString()
 
             if(launch.dateUtc.isNullOrBlank()) {
@@ -45,7 +46,7 @@ class LaunchAdapter (private var launches: List<LaunchModel>, private val listen
                 binding.dateTextView.text = launch.dateUtc!!.take(10)
             }
 
-            if(launch.links!!.patch!!.small != null)
+           if(launch.links!!.patch!!.small != null)
             {
                 Glide.with(context)
                     .load(launch.links?.patch?.small)

@@ -8,7 +8,7 @@
         android:id="@+id/menu_favBtn"
         android:orderInCategory="300"
         android:title="User"
-
+        android:checked="true"
         android:icon="@drawable/fav_pin"
         app:showAsAction="ifRoom">
     </item>

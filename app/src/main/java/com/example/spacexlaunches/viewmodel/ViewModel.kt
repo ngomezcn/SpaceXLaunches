@@ -2,7 +2,6 @@ package com.example.spacexlaunches.viewmodel
 
 import Repository
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.MutableLiveData
 import com.example.spacexlaunches.models.Launch.LaunchModel
@@ -18,9 +17,9 @@ class ViewModel : ViewModel() {
     val repository = Repository()
     var launchList = MutableLiveData<List<LaunchModel>>()
 
-    var optionsMenu = MutableLiveData<Menu>()
+    var pinnedItem = MutableLiveData<MenuItem>()
 
-    var pinnedSearch = MutableLiveData<Boolean>( false )
+    //var pinnedSearch = MutableLiveData<Boolean>( /* value = */ true )
 
     var searchLaunchList = MutableLiveData<MutableList<LaunchModel>>(mutableListOf())
 
@@ -32,8 +31,15 @@ class ViewModel : ViewModel() {
     var scrollPos = MutableLiveData<Int>(0)
 
     init {
+        loadInitData()
+    }
+
+    fun loadInitData()
+    {
         fetchMissionList("launches")
     }
+
+
 
     private fun fetchMissionList(url: String) {
 

@@ -1,6 +1,5 @@
 package com.example.spacexlaunches.fragments
 
-import android.R.color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -58,6 +57,17 @@ class LaunchListFragment : Fragment(), OnClickListener {
             }
         })
 
+        if(viewModel.pinnedItem.value != null) {
+            if(viewModel.pinnedItem.value!!.isChecked) {
+                loadPinnedList()
+                setPinnedBtnColor(R.color.favBlueColor)
+            }
+            else if (!viewModel.pinnedItem.value!!.isChecked) {
+                viewModel.loadInitData()
+                setPinnedBtnColor(R.color.white)
+            }
+        }
+
         binding.searchTextInput.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -85,36 +95,16 @@ class LaunchListFragment : Fragment(), OnClickListener {
         })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    private fun setPinnedBtnColor(color : Int ) {
 
-        if(viewModel.pinnedSearch.value!! == false)
-        {
-            viewModel.pinnedSearch.value = true
-
-            view
-
-            val normalDrawable = item.icon
-            val wrapDrawable = DrawableCompat.wrap(normalDrawable)
-            DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.favBlueColor))
-            item.setIcon(wrapDrawable)
-            when(item.itemId) {
-                R.id.menu_favBtn -> loadLocalDB()
-            }
-        } else
-        {
-            viewModel.pinnedSearch.value = false
-            val normalDrawable = item.icon
-            val wrapDrawable = DrawableCompat.wrap(normalDrawable)
-            DrawableCompat.setTint(wrapDrawable, requireActivity().resources.getColor(R.color.white))
-            item.setIcon(wrapDrawable)
-
-            val models = mutableListOf<LaunchModel>()
-            setUpRecyclerView(viewModel.launchList.value!!)
-        }
-        return false
+        val oItem = viewModel.pinnedItem.value!!
+        val normalDrawable = oItem.icon
+        val wrapDrawable = DrawableCompat.wrap(normalDrawable)
+        DrawableCompat.setTint(wrapDrawable, this.resources.getColor(color))
+        oItem.setIcon(wrapDrawable)
     }
 
-    private fun loadLocalDB() {
+    fun loadPinnedList() {
 
         val models = mutableListOf<LaunchModel>()
 
@@ -139,10 +129,29 @@ class LaunchListFragment : Fragment(), OnClickListener {
                 launch.links!!.patch!!.small = i.links_patch_small
 
                 models.add(launch)
+                viewModel.launchList.postValue(models)
             }
         }
+    }
 
-        setUpRecyclerView(models)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+            R.id.menu_favBtn -> {
+
+                if(viewModel.pinnedItem.value!!.isChecked) {
+                    viewModel.pinnedItem.value!!.isChecked = false
+                    loadPinnedList()
+                    setPinnedBtnColor(R.color.favBlueColor)
+                }
+                else if (!viewModel.pinnedItem.value!!.isChecked) {
+                    viewModel.pinnedItem.value!!.isChecked = true
+                    viewModel.loadInitData()
+                    setPinnedBtnColor(R.color.white)
+                }
+            }
+        }
+        return false
     }
 
     private fun setUpRecyclerView(myData: List<LaunchModel>) {
@@ -165,5 +174,4 @@ class LaunchListFragment : Fragment(), OnClickListener {
         }
         findNavController().navigate(com.example.spacexlaunches.R.id.action_launchList_to_launchDetail)
     }
-
 }
