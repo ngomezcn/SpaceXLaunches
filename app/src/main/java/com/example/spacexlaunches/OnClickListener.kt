@@ -1,7 +1,8 @@
 package com.example.spacexlaunches
 
-import com.example.spacexlaunches.models.Launch.LaunchModel
+import com.example.spacexlaunches.models.Mission.MissionModel
 
 interface OnClickListener {
-    fun onClick(launch: LaunchModel)
+    fun onClick(mission: MissionModel)
 }
+

@@ -9,7 +9,7 @@
         android:orderInCategory="300"
         android:title="User"
         android:checked="true"
-        android:icon="@drawable/fav_pin"
+        android:icon="@drawable/fav_pin_white"
         app:showAsAction="ifRoom">
     </item>
 </menu>

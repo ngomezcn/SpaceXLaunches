@@ -1,4 +1,4 @@
-package com.example.spacexlaunches.models.Launch
+package com.example.spacexlaunches.models.Mission
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,6 @@
 package com.example.spacexlaunches.retrofit
 
-import com.example.spacexlaunches.models.Launch.LaunchModel
+import com.example.spacexlaunches.models.Mission.MissionModel
 import com.example.spacexlaunches.models.LaunchpadModel
 import com.example.spacexlaunches.models.Rocket.RocketModel
 import okhttp3.OkHttpClient
@@ -13,7 +13,7 @@ import retrofit2.http.Url
 interface ApiInterface {
 
     @GET()
-    suspend fun getAllMissions (@Url url: String): Response<List<LaunchModel>>
+    suspend fun getAllMissions (@Url url: String): Response<List<MissionModel>>
 
     @GET()
     suspend fun getRocketDetail (@Url url: String): Response<RocketModel>
@@ -21,9 +21,8 @@ interface ApiInterface {
     @GET()
     suspend fun getLaunchpadDetail (@Url url: String): Response<LaunchpadModel>
 
-
     companion object {
-        val BASE_URL = "https://api.spacexdata.com/v4/"
+        const val BASE_URL = "https://api.spacexdata.com/v4/"
 
         fun create(): ApiInterface {
             val client = OkHttpClient.Builder().build()

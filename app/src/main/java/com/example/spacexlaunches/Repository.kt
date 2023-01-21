@@ -9,6 +9,5 @@ class Repository {
     suspend fun getRocketDetail(url: String) = apiInterface.getRocketDetail(url)
 
     suspend fun getLaunchpadDetail(url: String) = apiInterface.getLaunchpadDetail(url)
-
 }
 

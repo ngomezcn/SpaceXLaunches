@@ -1,7 +1,11 @@
 package com.example.spacexlaunches.models
 
+import com.example.spacexlaunches.models.Launchpad.Images
+
 data class LaunchpadModel(
-    val details: String,
+    val name: String,
+
+   /*val details: String,
     val full_name: String,
     val id: String,
     val images: Images,
@@ -11,13 +15,8 @@ data class LaunchpadModel(
     val launches: List<String>,
     val locality: String,
     val longitude: Double,
-    val name: String,
     val region: String,
     val rockets: List<String>,
     val status: String,
-    val timezone: String
-)
-
-data class Images(
-    val large: List<String>
+    val timezone: String*/
 )

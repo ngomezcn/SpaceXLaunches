@@ -37,9 +37,10 @@
         app:layout_constraintStart_toEndOf="@+id/launchImage_imageView"/>
 
     <ImageView
+        android:id="@+id/pinnedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/fav_pin"
+        android:src="@drawable/fav_pin_white"
 
 
         android:rotation="40"

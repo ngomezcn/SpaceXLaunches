@@ -3,14 +3,14 @@ package com.example.spacexlaunches.room
 import android.app.Application
 import androidx.room.Room
 
-class LaunchesApplication: Application() {
+class MissionsListApplication: Application() {
     companion object {
-        lateinit var database: LaunchesDatabase
+        lateinit var database: MissionsDatabase
     }
     override fun onCreate() {
         super.onCreate()
         database = Room.databaseBuilder(this,
-            LaunchesDatabase::class.java,
-            "LaunchessDatabase_ITB900").build()
+            MissionsDatabase::class.java,
+            "MissionsDatabase_TEST1").build()
     }
 }

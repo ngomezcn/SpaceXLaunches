@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.LaunchListFragment"
+    tools:context=".fragments.MissionListFragment"
     android:background="@color/black_x">
 
     <TextView
@@ -20,21 +20,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="15dp" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_LayoutTextInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/search_hint"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="10dp"
         android:layout_marginLeft="15dp"
-
         app:startIconDrawable="@drawable/search_drawable"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appTitle_TextView"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/pinned_button">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_TextInput"
@@ -43,7 +40,26 @@
             android:enabled="false"
             android:background="@drawable/layout_search_rounded_bg"
             android:fontFamily="@font/alata" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/pinned_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:rotation="40"
+        android:background="@drawable/fav_pin_white"
+        android:button="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/appTitle_TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_LayoutTextInput"
+        app:layout_constraintBottom_toBottomOf="@+id/search_LayoutTextInput"/>
+
+
+
 
     <!--<ImageView
         android:id="@+id/pin_ImageView"
